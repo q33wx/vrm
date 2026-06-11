@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variante Hotel & Cafe - A3 Menu Brochure</title>
+    <!-- Google Fonts: Cormorant Garamond for elegant serif headers/quotes, Montserrat for clean/modern menu items -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <!-- Floating Action Button for Browser Preview -->
+    <button id="floating-print-btn" onclick="window.print()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 6 2 18 2 18 9"></polyline>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path>
+            <rect x="6" y="14" width="12" height="8"></rect>
+        </svg>
+        Yazdır / PDF Kaydet
+    </button>
+
+    <div class="brochure-container">
+
+        <!-- ========================================== -->
+        <!-- SHEET 1: OUTSIDE (Left: Back Cover | Right: Front Cover) -->
+        <!-- ========================================== -->
+        <section class="sheet" id="sheet-outside">
+            <div class="sheet-inner">
+
+                <!-- BACK COVER (Left Page) -->
+                <div class="page page-back">
+                    <div class="paper-texture"></div>
+                    <div class="page-border"></div>
+                    <img src="img/inside.jpeg" alt="" class="cover-watermark">
+
+                    <div class="page-content">
+                        <!-- Branding: Much Larger Logo (Original Colors) -->
+                        <div class="brand-header">
+                            <img src="brand/logo.svg" alt="Logo" class="menu-logo-back">
+                        </div>
+
+                        <!-- Contact Block (Exact prompt data + Socials & Web) -->
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <span class="contact-icon">✦</span>
+                                <p class="contact-text font-serif">Birleşmiş Milletler Caddesi, 404. Sk. No:27/A
+                                    Varyant, 35260 Konak/İzmir</p>
+                            </div>
+
+                            <div class="contact-divider"></div>
+
+                            <div class="contact-item">
+                                <span class="contact-icon">✦</span>
+                                <div class="phones">
+                                    <p class="contact-text phone-num">+90 232 425 40 99</p>
+                                    <p class="contact-text phone-num">+90 542 609 40 99</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-divider"></div>
+
+                            <div class="contact-item">
+                                <span class="contact-icon">✦</span>
+                                <div class="socials-web">
+                                    <p class="contact-text"><a href="https://variantehotel.com/" target="_blank"
+                                            class="contact-link">variantehotel.com</a></p>
+                                    <p class="contact-text"><a href="https://www.instagram.com/hotelvariante"
+                                            target="_blank" class="contact-link">instagram.com/hotelvariante</a></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Back Cover Gallery (3 Venue Photos - Matted Rectangles) -->
+                        <div class="cover-gallery venue-gallery">
+                            <div class="gallery-item rect-item"><img src="img/viewfrombar.jpeg" alt="Variante Bar View">
+                            </div>
+                            <div class="gallery-item rect-item"><img src="img/view1.jpeg" alt="Variante View 1"></div>
+                            <div class="gallery-item rect-item"><img src="img/view2.jpeg" alt="Variante View 2"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FRONT COVER (Right Page) -->
+                <div class="page page-front">
+                    <div class="paper-texture"></div>
+                    <div class="page-border"></div>
+                    <img src="img/view.jpeg" alt="" class="cover-watermark">
+
+                    <div class="page-content">
+                        <div class="cover-top-tag">HOŞ GELDİNİZ</div>
+
+                        <!-- Main Branding: Much Larger Logo (Original Colors) -->
+                        <div class="cover-brand">
+                            <img src="brand/logo.svg" alt="Logo" class="menu-logo-front">
+                            <h1 class="front-menu-title">MENÜ</h1>
+                        </div>
+
+                        <!-- Front Cover Gallery (2 Food Photos - Matted Rectangles) -->
+                        <div class="cover-gallery food-gallery">
+                            <div class="gallery-item rect-item"><img src="img/food.jpeg" alt="Food 1"></div>
+                            <div class="gallery-item rect-item"><img src="img/food4.jpeg" alt="Food 2"></div>
+                        </div>
+
+                        <!-- Front Cover Footer Contact Info -->
+                        <div class="cover-footer-contact">
+                            <a href="https://variantehotel.com/" target="_blank"
+                                class="footer-link">variantehotel.com</a>
+                            <span class="footer-separator">✦</span>
+                            <a href="https://www.instagram.com/hotelvariante" target="_blank"
+                                class="footer-link">instagram.com/hotelvariante</a>
+                            <span class="footer-separator">✦</span>
+                            <span class="footer-phone">+90 542 609 40 99</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SHEET 2: INSIDE (Left: Inside Left Page | Right: Inside Right Page) -->
+        <!-- ========================================== -->
+        <section class="sheet" id="sheet-inside">
+            <div class="sheet-inner">
+
+                <!-- INSIDE LEFT (Kahvaltı, Tostlar, Atıştırmalıklar) -->
+                <div class="page page-inside-left">
+                    <div class="paper-texture"></div>
+                    <div class="inside-page-border"></div>
+
+                    <!-- Faint transparent background watermarks in fitting outer corners -->
+                    <img src="img/tost2.jpeg" alt="" class="page-watermark wm-top-left">
+                    <img src="img/tost3.jpeg" alt="" class="page-watermark wm-bottom-left">
+
+                    <div class="inside-page-content">
+                        <div class="inside-columns">
+
+                            <!-- Column 1: Güne Başlarken, KAHVALTI -->
+                            <div class="inside-column">
+                                <div class="menu-section">
+                                    <!-- Photo on top of category -->
+                                    <div class="category-photo">
+                                        <img src="img/breakfast.jpeg" alt="Kahvaltı" class="breakfast-img">
+                                    </div>
+
+                                    <div class="category-header">
+                                        <span class="category-subtitle">Güne Başlarken,</span>
+                                        <h3 class="category-title">KAHVALTI</h3>
+                                        <div class="category-underline"></div>
+                                    </div>
+
+                                    <div class="menu-items-list">
+                                        <div class="menu-item">
+                                            <div class="item-lead">
+                                                <span class="item-name">Variante Kahvaltı (2 Kişilik)</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">1.375 ₺</span>
+                                            </div>
+                                            <p class="item-desc">Peynir tabağı, bal&amp;kaymak, zeytin çeşitleri, söğüş
+                                                tabağı, güveçte yumurta, ekmek çeşitleri, 1 bardak sıcak ballı süt veya
+                                                2 fincan çay</p>
+                                        </div>
+
+                                        <div class="menu-item">
+                                            <div class="item-lead">
+                                                <span class="item-name">İzmir Kahvaltısı</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">400 ₺</span>
+                                            </div>
+                                            <p class="item-desc">1 adet boyoz, İzmir tulumu, ceviz, haşlanmış yumurta,
+                                                domates, salatalık, ev yapımı reçel ve 2 adet fincan çay</p>
+                                        </div>
+
+                                        <div class="menu-item">
+                                            <div class="item-lead">
+                                                <span class="item-name">Menemen</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">295 ₺</span>
+                                            </div>
+                                            <p class="item-desc">Kızarmış ekşi maya ekmeği ile</p>
+                                        </div>
+
+                                        <div class="menu-item">
+                                            <div class="item-lead">
+                                                <span class="item-name">Güveçte Sucuklu&amp;Kaşarlı Yumurta</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">345 ₺</span>
+                                            </div>
+                                            <p class="item-desc">Tereyağı, kasap sucuk, iki adet yumurta üzerine kaşar
+                                                peyniri ile</p>
+                                        </div>
+
+                                        <div class="menu-item">
+                                            <div class="item-lead">
+                                                <span class="item-name">Ege Otlu Tulum Peynirli Omlet</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">325 ₺</span>
+                                            </div>
+                                            <p class="item-desc">İzmir tulum peyniri, zeytinyağı, iki adet yumurta,
+                                                mevsimlik ege otları</p>
+                                        </div>
+
+                                        <div class="menu-item">
+                                            <div class="item-lead">
+                                                <span class="item-name">Variante Kahvaltı Salatası</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">475 ₺</span>
+                                            </div>
+                                            <p class="item-desc">İzmir tulum peyniri, salatalık, domates, ceviz, ege
+                                                yeşillikleri, yeşil biber, süt peyniri, kuru domates, kekik, zeytinyağı,
+                                                kıtır gevrek ile</p>
+                                        </div>
+                                    </div>
+
+                                    <blockquote class="menu-quote">
+                                        <p class="quote-text">"Yemek yemek üstüne ne düşünürsünüz bilmem ama kahvaltının
+                                            mutlulukla bir ilgisi olmalı"</p>
+                                        <cite class="quote-author">CEMAL SÜREYYA</cite>
+                                    </blockquote>
+                                </div>
+                            </div>
+
+                            <!-- Column 2: TOSTLAR & LEZZETLİ ATISTIRMALIKLAR -->
+                            <div class="inside-column">
+                                <div class="menu-section">
+                                    <!-- Photo on top of category -->
+                                    <div class="category-photo">
+                                        <img src="img/tost.jpeg" alt="Tostlar" class="toast-img">
+                                    </div>
+
+                                    <div class="category-header">
+                                        <h3 class="category-title">TOSTLAR</h3>
+                                        <div class="category-underline"></div>
+                                    </div>
+
+                                    <div class="menu-items-list">
+                                        <div class="menu-item">
+                                            <div class="item-lead">
+                                                <span class="item-name">Variante Kumru Tost</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">320 ₺</span>
+                                            </div>
+                                            <p class="item-desc">İzmir Kumru ekmeği içine tereyağı, ev salçası, eski
+                                                kaşar, domates, fesleğen yanına kızarmış patates ve yeşillik</p>
+                                        </div>
+
+                                        <div class="menu-item">
+                                            <div class="item-lead">
+                                                <span class="item-name">Çift Kaşarlı Klasik Tost</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">290 ₺</span>
+                                            </div>
+                                            <p class="item-desc">Tost ekmeği içine tereyağı, taze kaşar, yanına kızarmış
+                                                patates ve yeşillik</p>
+                                        </div>
+
+                                        <div class="menu-item">
+                                            <div class="item-lead">
+                                                <span class="item-name">Ton Balıklı ve Limon Soslu Açık Tost</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">480 ₺</span>
+                                            </div>
+                                            <p class="item-desc">Ekşi maya ekmeği üzerine özel limon soslu ton balığı
+                                                çeri domates yanına kızarmış patates ve yeşillik</p>
+                                        </div>
+
+                                        <div class="menu-item">
+                                            <div class="item-lead">
+                                                <span class="item-name">Domates ve Peynirli Açık Tost</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">430 ₺</span>
+                                            </div>
+                                            <p class="item-desc">Ekşi maya ekmeği üzerine beyaz peynir, zeytinyağlı
+                                                domatesli fesleğen sos, ceviz, yeşillik yanına kızartmış patates and
+                                                yeşillik</p>
+                                        </div>
+
+                                        <div class="menu-item">
+                                            <div class="item-lead">
+                                                <span class="item-name">Variante Tavuklu Açık Fırın Tost</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">510 ₺</span>
+                                            </div>
+                                            <p class="item-desc">Klasik beyaz fırın ekmeği üzerine tavuk, mantar, kapya
+                                                biber, krema, baharatlar, taze kaşar peyniri yanına kızarmış patates,
+                                                yeşillik</p>
+                                        </div>
+
+                                        <div class="menu-item">
+                                            <div class="item-lead">
+                                                <span class="item-name">Sucuklu Bazlama Tost</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">360 ₺</span>
+                                            </div>
+                                            <p class="item-desc">Ev yapımı bazlama ekmeği içine tereyağı, kasap sucuk,
+                                                eski kaşar, yanına kızarmış patates ve yeşillik</p>
+                                        </div>
+                                    </div>
+
+                                    <blockquote class="menu-quote">
+                                        <p class="quote-text">"Yemek yemek üstüne ne düşünürsünüz bilmem ama kahvaltının
+                                            mutlulukla bir ilgisi olmalı"</p>
+                                        <cite class="quote-author">CEMAL SÜREYYA</cite>
+                                    </blockquote>
+                                </div>
+
+                                <div class="column-separator"></div>
+
+                                <div class="menu-section">
+                                    <!-- Photo on top of category -->
+                                    <div class="category-photo">
+                                        <img src="img/snack.jpeg" alt="Atıştırmalıklar" class="snack-img">
+                                    </div>
+
+                                    <div class="category-header">
+                                        <h3 class="category-title">LEZZETLİ ATISTIRMALIKLAR</h3>
+                                        <div class="category-underline"></div>
+                                    </div>
+
+                                    <div class="menu-items-list">
+                                        <div class="menu-item">
+                                            <div class="item-lead">
+                                                <span class="item-name">Sosis &amp; Patates Tava</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">400 ₺</span>
+                                            </div>
+                                            <p class="item-desc">Kızartılmış dana sosis ve patates özel sos ile</p>
+                                        </div>
+
+                                        <div class="menu-item">
+                                            <div class="item-lead">
+                                                <span class="item-name">Variante Ekşili Patates</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">350 ₺</span>
+                                            </div>
+                                            <p class="item-desc">Zeytinyağında kızartılmış ev patatesi, sarımsaklı limon
+                                                sos, maydanoz</p>
+                                        </div>
+
+                                        <div class="menu-item">
+                                            <div class="item-lead">
+                                                <span class="item-name">Anne Patatesi</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">370 ₺</span>
+                                            </div>
+                                            <p class="item-desc">Zeytinyağında kızartılmış patates domates sos ve yoğurt
+                                                eşliğinde</p>
+                                        </div>
+
+                                        <div class="menu-item">
+                                            <div class="item-lead">
+                                                <span class="item-name">Bira Tabağı</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">705 ₺</span>
+                                            </div>
+                                            <p class="item-desc">Patates Kızartması, Sigara böreği, Sosis, Çıtır tavuk
+                                                parçaları, soğan halkası, patates kroket</p>
+                                        </div>
+                                    </div>
+
+                                    <blockquote class="menu-quote">
+                                        <p class="quote-text">"Yeni bir yemeğin keşfi, insan ırkının mutluluğuna, bir
+                                            yıldızın keşfedilmesinden daha fazla katkıda bulunur."</p>
+                                        <cite class="quote-author">Jean Anthelme Brillat-Savarin</cite>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INSIDE RIGHT (Ana Yemekler, Tatlılar, İçecekler) -->
+                <div class="page page-inside-right">
+                    <div class="paper-texture"></div>
+                    <div class="inside-page-border"></div>
+
+                    <!-- Faint transparent background watermarks in fitting outer corners -->
+                    <img src="img/coffee.jpg" alt="" class="page-watermark wm-top-right">
+                    <img src="img/tost5.jpeg" alt="" class="page-watermark wm-bottom-right">
+
+                    <div class="inside-page-content">
+                        <div class="inside-columns">
+
+                            <!-- Column 1: ANA YEMEKLER & TATLILAR -->
+                            <div class="inside-column">
+                                <div class="menu-section">
+                                    <!-- Photo on top of category -->
+                                    <div class="category-photo">
+                                        <img src="img/meal.jpeg" alt="Ana Yemekler" class="meal-img">
+                                    </div>
+
+                                    <div class="category-header">
+                                        <h3 class="category-title">ANA YEMEKLER</h3>
+                                        <div class="category-underline"></div>
+                                    </div>
+
+                                    <div class="menu-items-list">
+                                        <div class="menu-item">
+                                            <div class="item-lead">
+                                                <span class="item-name">Günün Çorbası</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">265 ₺</span>
+                                            </div>
+                                            <p class="item-desc">Kıtır Ekmek ile</p>
+                                        </div>
+
+                                        <div class="menu-item">
+                                            <div class="item-lead">
+                                                <span class="item-name">Izgara Kasap Köfte</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">690 ₺</span>
+                                            </div>
+                                            <p class="item-desc">Izgara kasap köfte, patates, naneli süzme yoğurt,
+                                                salata tahin sos eşliğinde</p>
+                                        </div>
+
+                                        <div class="menu-item">
+                                            <div class="item-lead">
+                                                <span class="item-name">Kremalı Mantarlı Tavuklu Penne</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">520 ₺</span>
+                                            </div>
+                                            <p class="item-desc">Penne makarna, jülyen tavuk, mantar ve krema sos</p>
+                                        </div>
+
+                                        <div class="menu-item">
+                                            <div class="item-lead">
+                                                <span class="item-name">Bolonez Soslu Spagetti</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">585 ₺</span>
+                                            </div>
+                                            <p class="item-desc">Dana kıyma, havuç, domates sos, çeşitli baharatlar</p>
+                                        </div>
+
+                                        <div class="menu-item">
+                                            <div class="item-lead">
+                                                <span class="item-name">Ev Mantısı</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">570 ₺</span>
+                                            </div>
+                                            <p class="item-desc">Dana etli ev mantısı, yoğurt üzerine tereyağlı sos
+                                                kırmızı biber nane</p>
+                                        </div>
+
+                                        <div class="menu-item">
+                                            <div class="item-lead">
+                                                <span class="item-name">Izgara Tavuk Şiş</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">530 ₺</span>
+                                            </div>
+                                            <p class="item-desc">Özel sosu ile marine edilmiş tavuk şiş, biber, çeri
+                                                domates, yanına baharatlı patates, naneli süzme yoğurt, tahin soslu
+                                                yeşil salata</p>
+                                        </div>
+                                    </div>
+
+                                    <blockquote class="menu-quote">
+                                        <p class="quote-text">"Ağzınızda yemek olduğu an dünyanın tüm sırlarını
+                                            çözmüşsünüz demektir"</p>
+                                        <cite class="quote-author">Franz KAFKA</cite>
+                                    </blockquote>
+                                </div>
+
+                                <div class="column-separator"></div>
+
+                                <div class="menu-section">
+                                    <!-- Photo on top of category -->
+                                    <div class="category-photo">
+                                        <img src="img/desert.jpg" alt="Tatlılar" class="desert-img">
+                                    </div>
+
+                                    <div class="category-header">
+                                        <h3 class="category-title">TATLILAR</h3>
+                                        <div class="category-underline"></div>
+                                    </div>
+
+                                    <div class="menu-items-list">
+                                        <div class="menu-item compact">
+                                            <div class="item-lead">
+                                                <span class="item-name">Mozaik Pasta</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">400 ₺</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="menu-item compact">
+                                            <div class="item-lead">
+                                                <span class="item-name">Limonlu Cheesecake</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">450 ₺</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <blockquote class="menu-quote">
+                                        <p class="quote-text">"Misafire En iyi ikram, güler yüz ve tatlı dildir."</p>
+                                        <cite class="quote-author">İmam EVZAİ</cite>
+                                    </blockquote>
+                                </div>
+                            </div>
+
+                            <!-- Column 2: SOĞUK & SICAK İÇECEKLER -->
+                            <div class="inside-column">
+                                <div class="menu-section">
+                                    <!-- Photo on top of category -->
+                                    <div class="category-photo">
+                                        <img src="img/coldrinks.jpeg" alt="Soğuk İçecekler" class="coldrinks-img">
+                                    </div>
+
+                                    <div class="category-header">
+                                        <h3 class="category-title">SOĞUK İÇECEKLER</h3>
+                                        <div class="category-underline"></div>
+                                    </div>
+
+                                    <div class="menu-items-list compact-list">
+                                        <div class="menu-item compact">
+                                            <div class="item-lead">
+                                                <span class="item-name">Su / Water</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">75 ₺</span>
+                                            </div>
+                                        </div>
+                                        <div class="menu-item compact">
+                                            <div class="item-lead">
+                                                <span class="item-name">Maden Suyu / Mineral Water</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">110 ₺</span>
+                                            </div>
+                                        </div>
+                                        <div class="menu-item compact">
+                                            <div class="item-lead">
+                                                <span class="item-name">Kola / Coco-Cola</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">150 ₺</span>
+                                            </div>
+                                        </div>
+                                        <div class="menu-item compact">
+                                            <div class="item-lead">
+                                                <span class="item-name">Gazoz / Sprite</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">150 ₺</span>
+                                            </div>
+                                        </div>
+                                        <div class="menu-item compact">
+                                            <div class="item-lead">
+                                                <span class="item-name">Fanta / Fanta</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">150 ₺</span>
+                                            </div>
+                                        </div>
+                                        <div class="menu-item compact">
+                                            <div class="item-lead">
+                                                <span class="item-name">Meyve Suyu / Fruit Juice</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">150 ₺</span>
+                                            </div>
+                                        </div>
+                                        <div class="menu-item compact">
+                                            <div class="item-lead">
+                                                <span class="item-name">Taze Sıkılmış Portakal Suyu / Freshly Squeezed
+                                                    Orange Juice</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">250 ₺</span>
+                                            </div>
+                                        </div>
+                                        <div class="menu-item compact">
+                                            <div class="item-lead">
+                                                <span class="item-name">Enerji İçeceği / Energy Drink</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">190 ₺</span>
+                                            </div>
+                                        </div>
+                                        <div class="menu-item compact">
+                                            <div class="item-lead">
+                                                <span class="item-name">Naneli Fesleğenli Ayran / Mint and Basil
+                                                    Flavored Buttermilk</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">150 ₺</span>
+                                            </div>
+                                        </div>
+                                        <div class="menu-item compact">
+                                            <div class="item-lead">
+                                                <span class="item-name">Limonata / Lemonade</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">245 ₺</span>
+                                            </div>
+                                        </div>
+                                        <div class="menu-item compact">
+                                            <div class="item-lead">
+                                                <span class="item-name">Soğuk Çay / İce Tea</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">150 ₺</span>
+                                            </div>
+                                        </div>
+                                        <div class="menu-item compact">
+                                            <div class="item-lead">
+                                                <span class="item-name">Çörçil / Churchill</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">150 ₺</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="column-separator"></div>
+
+                                <div class="menu-section">
+                                    <!-- Photo on top of category -->
+                                    <div class="category-photo">
+                                        <img src="img/herbal.jpg" alt="Sıcak İçecekler" class="coffee-img">
+                                    </div>
+
+                                    <div class="category-header">
+                                        <h3 class="category-title">SICAK İÇECEKLER</h3>
+                                        <div class="category-underline"></div>
+                                    </div>
+
+                                    <div class="menu-items-list compact-list">
+                                        <div class="menu-item compact">
+                                            <div class="item-lead">
+                                                <span class="item-name">İnce Belli Çay / Slim Waisted Tea</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">90 ₺</span>
+                                            </div>
+                                        </div>
+                                        <div class="menu-item compact">
+                                            <div class="item-lead">
+                                                <span class="item-name">Fincan Çay / Cup of Tea</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">120 ₺</span>
+                                            </div>
+                                        </div>
+                                        <div class="menu-item compact">
+                                            <div class="item-lead">
+                                                <span class="item-name">Bitki Çayları / Herbal Teas</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">120 ₺</span>
+                                            </div>
+                                        </div>
+                                        <div class="menu-item compact">
+                                            <div class="item-lead">
+                                                <span class="item-name">Yeşil Çay / Green Tea</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">230 ₺</span>
+                                            </div>
+                                        </div>
+                                        <div class="menu-item compact">
+                                            <div class="item-lead">
+                                                <span class="item-name">Türk Kahvesi / Turkish Coffee</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">170 ₺</span>
+                                            </div>
+                                        </div>
+                                        <div class="menu-item compact">
+                                            <div class="item-lead">
+                                                <span class="item-name">Çift Türk Kahvesi / Double Turkish Coffe</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">220 ₺</span>
+                                            </div>
+                                        </div>
+                                        <div class="menu-item compact">
+                                            <div class="item-lead">
+                                                <span class="item-name">Filtre Kahve / Filter Coffee</span>
+                                                <span class="item-line"></span>
+                                                <span class="item-price">240 ₺</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <blockquote class="menu-quote text-quote-long">
+                                        <p class="quote-text">"O çay, sadece bir içecek değil, bir anlık huzurun, bir
+                                            anlık direncin simgesiydi. Tadı, bir hayatın özü gibiydi, acı ve tatlı
+                                            karışık, damakta kalan bir tecrübe gibi."</p>
+                                        <cite class="quote-author">Bekle Beni- Syf.19 -Zülfü LİVANELİ</cite>
+                                    </blockquote>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+</body>
+
+</html>

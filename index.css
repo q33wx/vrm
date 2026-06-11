@@ -1,0 +1,769 @@
+/* ==========================================================================
+   DESIGN SYSTEM & VARIABLES
+   ========================================================================== */
+:root {
+    /* Color Palette */
+    --color-cream-bg: #FAF6F0;
+    --color-cream-dark: #F3ECE2;
+    --color-sage-dark: #2C3A2E;
+    --color-sage-medium: #4A5B4C;
+    --color-sage-light: #6E7A68;
+    --color-gold: #C5A880;
+    --color-gold-light: #DFD4C4;
+    --color-charcoal: #3C3D37;
+    --color-charcoal-dark: #1C1D1A;
+    --color-white: #FFFFFF;
+    
+    /* Screen View Background */
+    --screen-bg: #151714;
+    
+    /* Typography */
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'Montserrat', sans-serif;
+    --font-code: 'Outfit', sans-serif;
+}
+
+/* Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--screen-bg);
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+    padding: 40px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    overflow-y: auto;
+}
+
+/* ==========================================================================
+   SCREEN CONTROLS (HIDDEN ON PRINT)
+   ========================================================================== */
+#floating-print-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 999;
+    background-color: var(--color-gold);
+    border: 1px solid #b59870;
+    color: var(--color-sage-dark);
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 8px 24px rgba(197, 168, 128, 0.4);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#floating-print-btn:hover {
+    background-color: #d6ba94;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(197, 168, 128, 0.6);
+}
+
+#floating-print-btn svg {
+    stroke: var(--color-sage-dark);
+}
+
+.brochure-container {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+    width: 100%;
+}
+
+/* ==========================================================================
+   A3 SHEET & PAGE GEOMETRY
+   ========================================================================== */
+.sheet {
+    width: 420mm;
+    height: 297mm;
+    background-color: var(--color-cream-bg);
+    position: relative;
+    box-shadow: 0 25px 65px rgba(0, 0, 0, 0.45);
+    border-radius: 4px;
+    overflow: hidden;
+    page-break-after: always;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}
+
+.sheet:last-child {
+    page-break-after: avoid;
+}
+
+.sheet-inner {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.page {
+    width: 210mm;
+    height: 297mm;
+    position: relative;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 15mm 15mm;
+    background-color: var(--color-cream-bg); /* Ivory base */
+}
+
+/* Paper Texture Overlay */
+.paper-texture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.04;
+    background-image: 
+        linear-gradient(90deg, rgba(139, 100, 48, 0.15) 1px, transparent 1px),
+        linear-gradient(rgba(139, 100, 48, 0.15) 1px, transparent 1px);
+    background-size: 4px 4px;
+    z-index: 20;
+}
+
+/* Page Outer Border Frame */
+.page-border {
+    position: absolute;
+    top: 10mm;
+    left: 10mm;
+    right: 10mm;
+    bottom: 10mm;
+    border: 1px solid var(--color-gold);
+    outline: 3px double var(--color-gold);
+    outline-offset: -6px;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.inside-page-border {
+    position: absolute;
+    top: 8mm;
+    left: 8mm;
+    right: 8mm;
+    bottom: 8mm;
+    border: 1px dashed rgba(44, 58, 46, 0.15);
+    pointer-events: none;
+    z-index: 5;
+}
+
+/* Page Contents wrapper */
+.page-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    padding: 8mm 5mm 5mm;
+}
+
+/* ==========================================================================
+   COVER PAGES STYLING (FRONT & BACK)
+   ========================================================================== */
+.cover-top-tag {
+    font-size: 8.5pt;
+    letter-spacing: 5px;
+    color: var(--color-sage-light);
+    font-weight: 600;
+    z-index: 10;
+    margin-bottom: 2mm;
+}
+
+/* Cover Branding & Logos */
+.cover-brand, .brand-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+    width: 100%;
+}
+
+/* Front & Back Cover Logos: Much Larger & Original Colors (No Filter) */
+.menu-logo-front {
+    width: 155mm; /* Very prominent logo */
+    height: auto;
+    max-height: 120mm;
+    margin-top: 5mm;
+    filter: none; /* Original colors */
+}
+
+.menu-logo-back {
+    width: 95mm;
+    height: auto;
+    max-height: 80mm;
+    margin-top: 5mm;
+    filter: none; /* Original colors */
+}
+
+/* FRONT COVER "MENÜ" TEXT */
+.front-menu-title {
+    font-family: var(--font-serif);
+    font-size: 26pt;
+    letter-spacing: 12px;
+    color: var(--color-sage-dark);
+    font-weight: 500;
+    margin-top: 8mm;
+    z-index: 10;
+}
+
+/* Contact Details on Back Cover */
+.contact-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3.5mm;
+    width: 100%;
+    max-width: 150mm;
+    z-index: 10;
+    margin-top: 5mm;
+}
+
+.contact-divider {
+    width: 15mm;
+    height: 1px;
+    background-color: rgba(197, 168, 128, 0.5);
+}
+
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5mm;
+}
+
+.contact-icon {
+    color: var(--color-gold);
+    font-size: 9pt;
+}
+
+.contact-text {
+    font-size: 8.5pt;
+    line-height: 1.4;
+    color: var(--color-charcoal);
+    font-weight: 500;
+    max-width: 130mm;
+}
+
+.font-serif {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 10.5pt;
+    color: var(--color-sage-medium);
+}
+
+.phones {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5mm;
+}
+
+.phone-num {
+    font-size: 9.5pt;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    color: var(--color-charcoal-dark);
+}
+
+/* Galleries on Covers (Clean, natural rectangles - no arches/dome shape) */
+.cover-gallery {
+    display: flex;
+    gap: 6mm;
+    justify-content: center;
+    width: 100%;
+    z-index: 10;
+    margin-bottom: 5mm;
+}
+
+.food-gallery {
+    margin-top: 5mm;
+}
+
+.venue-gallery {
+    margin-top: 5mm;
+}
+
+.gallery-item.rect-item {
+    overflow: hidden;
+    border: 1px solid var(--color-gold-light);
+    background-color: var(--color-white);
+    padding: 3.5mm 3.5mm 4.5mm; /* Classic white mat/passepartout frame */
+    box-shadow: 0 5px 15px rgba(44, 58, 46, 0.08); /* Soft photographic print shadow */
+    border-radius: 2px; /* Clean sharp photo paper corners */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Front Cover rectangles (2 Food Photos) */
+.food-gallery .rect-item {
+    width: 46mm;
+    height: 60mm;
+}
+
+.food-gallery .rect-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 1px solid rgba(44, 58, 46, 0.06); /* Subtle print border */
+    filter: sepia(6%) contrast(1.02) saturate(96%); /* Blends digital photos with warm paper texture */
+}
+
+/* Back Cover rectangles (3 Venue Photos) */
+.venue-gallery .rect-item {
+    width: 40mm;
+    height: 32mm;
+}
+
+.venue-gallery .rect-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 1px solid rgba(44, 58, 46, 0.06); /* Subtle print border */
+    filter: sepia(6%) contrast(1.02) saturate(96%); /* Blends digital photos with warm paper texture */
+}
+
+/* Cover Social & Web Links */
+.contact-link {
+    color: var(--color-sage-medium);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+    color: var(--color-gold);
+}
+
+.socials-web {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5mm;
+}
+
+/* Front Cover Footer Contact */
+.cover-footer-contact {
+    display: flex;
+    gap: 4mm;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5mm;
+    margin-bottom: 2mm;
+    z-index: 10;
+    width: 100%;
+}
+
+.footer-link {
+    font-size: 8.2pt;
+    font-weight: 600;
+    color: var(--color-sage-medium);
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: var(--color-gold);
+}
+
+.footer-separator {
+    color: var(--color-gold);
+    font-size: 7pt;
+}
+
+.footer-phone {
+    font-size: 8.2pt;
+    font-weight: 700;
+    color: var(--color-charcoal-dark);
+    letter-spacing: 0.5px;
+}
+
+.manzara-tagline, .footer-tagline {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 11pt;
+    color: var(--color-sage-medium);
+    margin-top: 2mm;
+    z-index: 10;
+}
+
+/* ==========================================================================
+   INSIDE SPREAD PAGES (Page 2 & Page 3)
+   ========================================================================== */
+.page-inside-left, .page-inside-right {
+    padding: 12mm 12mm 10mm;
+}
+
+/* Cover Page Background Watermark */
+.cover-watermark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.16; /* Increased visibility as requested */
+    pointer-events: none;
+    z-index: 1;
+    filter: sepia(30%) saturate(75%) brightness(1.05) contrast(0.95); /* Warm sepia blend with cream paper */
+}
+
+/* Outer Corner Background Watermarks (Directional fade-out, avoids fold line) */
+.page-watermark {
+    position: absolute;
+    opacity: 0.32; /* Increased visibility as requested */
+    pointer-events: none;
+    z-index: 2;
+    object-fit: cover;
+    filter: sepia(35%) saturate(75%) brightness(1.05) contrast(0.95); /* Soft, sun-faded warm sepia tone */
+    border-radius: 12px; /* Soft blended edges */
+    width: 85mm;
+    height: 85mm;
+}
+
+.wm-top-left {
+    top: -15mm;
+    left: -15mm;
+    mask-image: radial-gradient(circle at top left, black 25%, transparent 75%);
+    -webkit-mask-image: radial-gradient(circle at top left, black 25%, transparent 75%);
+}
+
+.wm-bottom-left {
+    bottom: -15mm;
+    left: -15mm;
+    mask-image: radial-gradient(circle at bottom left, black 25%, transparent 75%);
+    -webkit-mask-image: radial-gradient(circle at bottom left, black 25%, transparent 75%);
+}
+
+.wm-top-right {
+    top: -15mm;
+    right: -15mm;
+    mask-image: radial-gradient(circle at top right, black 25%, transparent 75%);
+    -webkit-mask-image: radial-gradient(circle at top right, black 25%, transparent 75%);
+}
+
+.wm-bottom-right {
+    bottom: -15mm;
+    right: -15mm;
+    mask-image: radial-gradient(circle at bottom right, black 25%, transparent 75%);
+    -webkit-mask-image: radial-gradient(circle at bottom right, black 25%, transparent 75%);
+}
+
+.inside-page-content {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.inside-columns {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    gap: 10mm;
+}
+
+.inside-column {
+    width: calc(50% - 5mm);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.column-separator {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed rgba(197, 168, 128, 0.35);
+    margin: 10px 0;
+}
+
+/* Category Sections (Transparent) */
+.menu-section {
+    position: relative;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    width: 100%;
+    margin-bottom: 2mm;
+    z-index: 10;
+}
+
+/* Category Headers */
+.category-header {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 4mm;
+    flex-shrink: 0;
+}
+
+.category-subtitle {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 9pt;
+    color: var(--color-sage-light);
+    letter-spacing: 1px;
+    margin-bottom: 0.5mm;
+}
+
+.category-title {
+    font-family: var(--font-serif);
+    font-size: 13.5pt;
+    font-weight: 700;
+    letter-spacing: 3.5px;
+    color: var(--color-sage-dark);
+}
+
+.category-underline {
+    width: 20mm;
+    height: 1.5px;
+    background: linear-gradient(to right, transparent, var(--color-gold) 30%, var(--color-gold) 70%, transparent 100%);
+    margin-top: 1.5mm;
+}
+
+/* Menu Items List */
+.menu-items-list {
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    gap: 3.2mm;
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6mm;
+}
+
+.item-lead {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+}
+
+.item-name {
+    font-size: 8.5pt;
+    font-weight: 700;
+    color: var(--color-charcoal-dark);
+    letter-spacing: 0.2px;
+    flex-shrink: 0;
+    max-width: 80%;
+}
+
+.item-line {
+    flex-grow: 1;
+    border-bottom: 1px dotted rgba(44, 58, 46, 0.3);
+    margin: 0 4px;
+}
+
+.item-price {
+    font-size: 8.8pt;
+    font-weight: 700;
+    color: var(--color-gold);
+    flex-shrink: 0;
+}
+
+.item-desc {
+    font-size: 7.2pt;
+    line-height: 1.35;
+    color: var(--color-charcoal);
+    font-weight: 400;
+}
+
+/* Compact Lists (Drinks & Desserts) */
+.compact-list {
+    gap: 1.8mm !important;
+}
+
+.menu-item.compact .item-name {
+    font-size: 7.8pt;
+    font-weight: 600;
+}
+
+.menu-item.compact .item-price {
+    font-size: 8pt;
+    font-weight: 600;
+}
+
+/* Quotes */
+.menu-quote {
+    position: relative;
+    z-index: 5;
+    margin: 3.5mm 0 0.5mm;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1px;
+    padding: 0 3mm;
+    border-top: 1px solid rgba(197, 168, 128, 0.15);
+    padding-top: 2.5mm;
+    flex-shrink: 0;
+}
+
+.quote-text {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 8.5pt;
+    line-height: 1.35;
+    color: var(--color-sage-medium);
+}
+
+.quote-author {
+    font-size: 6.5pt;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: var(--color-gold);
+    text-transform: uppercase;
+}
+
+.text-quote-long .quote-text {
+    font-size: 8pt !important;
+    line-height: 1.3;
+}
+
+.text-quote-long {
+    margin-top: 2.5mm !important;
+    padding-top: 2.5mm !important;
+}
+
+/* Category Photos on Top of Category (Natural rectangular look) */
+.category-photo {
+    width: 100%;
+    height: 32mm;
+    overflow: hidden;
+    border-radius: 6px;
+    margin-bottom: 4mm;
+    border: 1px solid rgba(197, 168, 128, 0.4);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    flex-shrink: 0;
+    z-index: 5;
+}
+
+.category-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(1.02);
+}
+
+/* Crop alignment settings to keep food visible */
+.breakfast-img {
+    object-position: center;
+}
+
+.toast-img {
+    object-position: center 85%; /* Focuses lower to reveal the toast food */
+}
+
+.snack-img {
+    object-position: center 65%;
+}
+
+.meal-img {
+    object-position: center 80%; /* Focuses lower to reveal the meal food */
+}
+
+.desert-img {
+    object-position: center;
+}
+
+.coldrinks-img {
+    object-position: center;
+}
+
+.coffee-img {
+    object-position: center;
+}
+
+/* Inside Footer */
+.inside-footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 4mm;
+    border-top: 1px dashed rgba(197, 168, 128, 0.12);
+    margin-top: 3mm;
+}
+
+/* ==========================================================================
+   PRINT DIRECTIVES (@media print)
+   ========================================================================== */
+@media print {
+    #floating-print-btn {
+        display: none !important;
+    }
+    
+    body {
+        background: none !important;
+        background-color: var(--color-white) !important;
+        color: var(--color-charcoal-dark) !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 420mm !important;
+        height: auto !important;
+        min-height: 0 !important;
+        overflow: visible !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+    
+    .brochure-container {
+        display: block !important;
+        gap: 0 !important;
+        width: 420mm !important;
+    }
+    
+    .sheet {
+        display: block !important;
+        width: 420mm !important;
+        height: 297mm !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        background-color: var(--color-cream-bg) !important;
+        page-break-after: always !important;
+        overflow: hidden !important;
+        border: none !important;
+        transform: none !important;
+    }
+    
+    .sheet:last-child {
+        page-break-after: avoid !important;
+    }
+    
+    @page {
+        size: A3 landscape;
+        margin: 0;
+    }
+}
